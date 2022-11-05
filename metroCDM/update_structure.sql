@@ -1,0 +1,16 @@
+--Actualizando updated_at para cada que que se actualice un registro quede guardado. 
+USE metro_cdmx;
+
+
+ALTER TABLE metro_cdmx.stations
+MODIFY COLUMN
+updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+
+ALTER TABLE metro_cdmx.lines
+MODIFY COLUMN 
+updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+ALTER TABLE metro_cdmx.trains
+MODIFY COLUMN
+updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
