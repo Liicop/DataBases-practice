@@ -1,12 +1,19 @@
 #Creando los paises
 
+USE world;
+
 CREATE TABLE world.countries (id INTEGER AUTO_INCREMENT, 
-                              name VARCHAR(30) NOT NULL,                                                      capital VARCHAR(30) NOT NULL,
-                              population BIGINT, area BIGINT, gdp BIGINT,                                     phone_code BIGINT, continent_id INTEGER,
-                              PRIMARY KEY(id), 
+                              name VARCHAR(30) NOT NULL, capital VARCHAR(30) NOT NULL, population BIGINT, area BIGINT,
+			      gdp BIGINT, phone_code BIGINT, continent_id INTEGER,
+			      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+			      updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
+			      PRIMARY KEY(id), 
+			      CONSTRAINT countries_continent_id_foreign
                               FOREIGN KEY(continent_id) 
                               REFERENCES world.continents(id)
-                              ON UPDATE NO ACTION ON DELETE NO ACTION);
+                              ON UPDATE NO ACTION ON DELETE NO ACTION)
+			      DEFAULT CHARSET = utf8mb4
+			      COLLATE = utf8mb4_unicode_ci;
 
 
 INSERT INTO world.countries (name, capital, population, area, gdp, phone_code, continent_id)
